@@ -1,6 +1,6 @@
 {
   "name": "solid-telegram-auth-button",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "SolidJS Telegram Auth Button",
   "author": {
     "name": "Kirill Chuprov",
@@ -20,5 +20,16 @@
   },
   "dependencies": {
     "solid-js": "^1.6.6"
-  }
+  },
+  "keywords": [
+    "solidjs",
+    "solid",
+    "telegram",
+    "auth",
+    "button",
+    "oauth"
+  ],
+  "files": [
+    "index.tsx"
+  ]
 }
