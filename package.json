@@ -1,0 +1,8 @@
+{
+  "name": "solid-telegram-auth-button",
+  "module": "index.ts",
+  "type": "module",
+  "dependencies": {
+    "solid-js": "^1.6.6"
+  }
+}
