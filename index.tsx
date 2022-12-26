@@ -14,10 +14,7 @@ declare global {
   interface Window {
     Telegram: {
       Login: {
-        auth: (
-          options: { bot_id: number },
-          callback: (user: TelegramUser) => void,
-        ) => void
+        auth: (options: { bot_id: number }, callback: (user: TelegramUser) => void) => void
       }
     }
   }
@@ -44,27 +41,19 @@ export function TelegramLoginButton({
     script.setAttribute('data-telegram-login', botNickname)
     script.setAttribute('data-size', 'large')
     script.setAttribute('data-request-access', 'write')
-    const div = document.createElement('div')
-    div.setAttribute('id', 'telegram_login')
-    // div.style.display = 'none'
-    container.appendChild(div)
-    div.appendChild(script)
-
+    container.appendChild(script)
     script.addEventListener('load', () => setLoading(false))
   })
 
   function onLoginWithTelegram() {
     // @ts-ignore
-    window.Telegram.Login.auth(
-      { bot_id: 5945464975 },
-      (tgUser: TelegramUser) => {
-        if (!tgUser) {
-          console.error('Error logging in with Telegram')
-          return
-        }
-        onAuth(tgUser)
-      },
-    )
+    window.Telegram.Login.auth({ bot_id: 5945464975 }, (tgUser: TelegramUser) => {
+      if (!tgUser) {
+        console.error('Error logging in with Telegram')
+        return
+      }
+      onAuth(tgUser)
+    })
   }
 
   return (
@@ -72,11 +61,7 @@ export function TelegramLoginButton({
       <Show when={!loading()} fallback={loadingElement}>
         {children}
       </Show>
-      <div
-        id='telegram-login-button'
-        ref={container!}
-        style={{ display: 'none' }}
-      />
+      <div id='telegram-login-button' ref={container!} style={{ display: 'none' }} />
     </button>
   )
 }
